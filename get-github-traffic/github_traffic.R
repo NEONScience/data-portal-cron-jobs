@@ -5,8 +5,10 @@ library(lubridate)
 library(httr)
 library(jsonlite)
 
-# outputDir <- '/home/NEON/mietkiewicz/cRON/get-github-traffic'
-outputDir <- '~/Box/NEON_Data_Portal/UserAnalytics/data-portal-cron-jobs/get-github-traffic'
+dir <- '~/Box/NEON_Data_Portal/UserAnalytics/data-portal-cron-jobs'
+outputDir <- file.path(dir, 'get-github-traffic')
+
+source(file.path(dir, 'api_tokens.R'))
 
 github_traffic_list <- list.files(outputDir, pattern = 'github-traffic-', full.names = TRUE)
 

@@ -1,8 +1,10 @@
 packages <- c('tidyverse', 'lubridate', 'stringr', 'httr', 'jsonlite')
 invisible(lapply(packages, library, character.only = TRUE, quietly = TRUE))
 
-# outputDir <- '/home/NEON/mietkiewicz/cRON/auth0'
-outputDir <- '~/Box/NEON_Data_Portal/UserAnalytics/data-portal-cron-jobs/auth0'
+dir <- '~/Box/NEON_Data_Portal/UserAnalytics/data-portal-cron-jobs'
+outputDir <- file.path(dir, 'auth0')
+
+source(file.path(dir, 'api_tokens.R'))
 
 api_query_url <- "https://data-neonscience.auth0.com/oauth/token/"
 headers <- add_headers("Content-Type" = "application/json")

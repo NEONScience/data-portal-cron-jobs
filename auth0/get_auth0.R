@@ -4,11 +4,6 @@ invisible(lapply(packages, library, character.only = TRUE, quietly = TRUE))
 # outputDir <- '/home/NEON/mietkiewicz/cRON/auth0'
 outputDir <- '~/Box/NEON_Data_Portal/UserAnalytics/data-portal-cron-jobs/auth0'
 
-# Get the API access token
-api_client_secret <- '9aU5NJox3VbhqfpRJbMpEKBzaxwUKkx-NwgPCQiVqNJ7c3oS1d2iI9zCoJqGB_FL'
-api_client_id <- 'bjJK2QLs9bgegdxZ4p6soxXWaxNOmTgW'
-api_audience <- 'https://data-neonscience.auth0.com/api/v2/'
-
 api_query_url <- "https://data-neonscience.auth0.com/oauth/token/"
 headers <- add_headers("Content-Type" = "application/json")
 body <- paste('{"client_id":"', api_client_id , '","client_secret":"', api_client_secret, '","audience":"', api_audience ,'","grant_type":"client_credentials"}',sep = "")

@@ -5,9 +5,6 @@ library(lubridate)
 library(httr)
 library(jsonlite)
 
-# For GitHub access
-GITHUB_TOKEN = '506d49fa5f3a904696d848df172469b115ee5869'
-
 # outputDir <- '/home/NEON/mietkiewicz/cRON/get-github-traffic'
 outputDir <- '~/Box/NEON_Data_Portal/UserAnalytics/data-portal-cron-jobs/get-github-traffic'
 

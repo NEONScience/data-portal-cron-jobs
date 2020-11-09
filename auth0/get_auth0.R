@@ -42,7 +42,7 @@ auth0_users <- do.call(rbind, lapply(as.list(seq(1,15, by=1)), function(i) {
     }
   ))
 
-previous_users <- list.files(outputDir, full.names = TRUE, pattern = 'auth0_users_report_20191219')
+previous_users <- list.files(outputDir, full.names = TRUE, pattern = 'auth0_users_report_')
 
 if(!identical(previous_users, character(0))) {
   previous_df <- readr::read_rds(previous_users)
@@ -50,13 +50,13 @@ if(!identical(previous_users, character(0))) {
   unlink(previous_users)
 }
 
-readr::write_rds(auth0_users, path = file.path(outputDir, paste0('auth0_users_report_', format(Sys.Date(), "%Y%m%d"), '.rds')))
+readr::write_rds(auth0_users, path = file.path(outputDir, paste0('auth0_users_report_20191219-', format(Sys.Date(), "%Y%m%d"), '.rds')))
 
 # Get the daily active users
 active_users <- tibble(active_users = get_Auth0_data(endpoint = 'stats/active-users', token = access_token)[[1]],
                        date = Sys.Date())
 
-previous_active_users <- list.files(outputDir, full.names = TRUE, pattern = 'auth0_active_users_report_20191219')
+previous_active_users <- list.files(outputDir, full.names = TRUE, pattern = 'auth0_active_users_report_')
 
 if(!identical(previous_active_users, character(0))) {
   previous_df <- readr::read_csv(previous_active_users)

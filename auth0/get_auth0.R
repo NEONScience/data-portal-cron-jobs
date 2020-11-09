@@ -45,8 +45,8 @@ auth0_users <- do.call(rbind, lapply(as.list(seq(1,15, by=1)), function(i) {
 previous_users <- list.files(outputDir, full.names = TRUE, pattern = 'auth0_users_report_20191219')
 
 if(!identical(previous_users, character(0))) {
-  previous_df <- readr::read_csv(previous_users)
-  auth0_users <- rbind(auth0_users, previous_df)
+  previous_df <- readr::read_rds(previous_users)
+  auth0_users <- bind_rows(auth0_users, previous_df)
   unlink(previous_users)
 }
 
@@ -60,7 +60,7 @@ previous_active_users <- list.files(outputDir, full.names = TRUE, pattern = 'aut
 
 if(!identical(previous_active_users, character(0))) {
   previous_df <- readr::read_csv(previous_active_users)
-  active_users <- rbind(active_users, previous_df)
+  active_users <- bind_rows(active_users, previous_df)
   unlink(previous_active_users)
 }
   

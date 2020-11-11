@@ -59,12 +59,12 @@ active_users <- tibble(active_users = get_Auth0_data(endpoint = 'stats/active-us
 previous_active_users <- list.files(outputDir, full.names = TRUE, pattern = 'auth0_active_users_report_')
 
 if(!identical(previous_active_users, character(0))) {
-  previous_df <- readr::read_csv(previous_active_users)
+  previous_df <- readr::read_rds(previous_active_users)
   active_users <- bind_rows(active_users, previous_df)
   unlink(previous_active_users)
 }
   
-readr::write_csv(active_users, path = file.path(outputDir, paste0('auth0_active_users_report_20191219-', format(Sys.Date(), "%Y%m%d"), '.csv')))
+readr::write_rds(active_users, path = file.path(outputDir, paste0('auth0_active_users_report_20191219-', format(Sys.Date(), "%Y%m%d"), '.rds')))
 
 
 

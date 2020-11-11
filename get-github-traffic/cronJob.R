@@ -5,7 +5,7 @@ sourceDir <- '/Users/mietkiewicz/Box/NEON_Data_Portal/UserAnalytics/data-portal-
 
 # This is the proper code for the daily runs.
 cron_add(command = cron_rscript(paste0(sourceDir, 'github_traffic.R')),
-         frequency = 'daily', at='00:30', days_of_week = 0, 
+         frequency = 'daily', at='23:30', days_of_week = 0, 
          id = 'github-traffic')
 
 # cron_rm('github-traffic')
